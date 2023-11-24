@@ -49,4 +49,31 @@ class BankAccount:
         except BalanceException as error:
             print(f'\nTransfer interrupted. ❌ {error}')
 
-# (6:45:58) Create new Class: https://youtu.be/qwAFL1597eM?si=_K0Y3omEcXlptVEo&t=24357
+# (6:45:58) Create new Interest Rewards Account Class: https://youtu.be/qwAFL1597eM?si=_K0Y3omEcXlptVEo&t=24357
+# Inherits from BankAccount
+class InterestRewardsAcct(BankAccount):
+    #Overwrite the deposit method. Deposit here gets added 5% as reward
+    def deposit(self, amount):
+        #return super().deposit(amount)
+        self.balance = self.balance + (amount * 1.05)
+        print("\nDeposit complete.")
+        self.getBalance()
+
+# (6:50:27) Create new Class: https://youtu.be/qwAFL1597eM?si=ThcBQXcEl1wCS2fB&t=24627
+# SavingsAcct inherits from InterestRewardsAcct which inherits from BankAccount
+class SavingsAcct(InterestRewardsAcct):
+    def __init__(self, initialAmount, acctName):
+        super().__init__(initialAmount, acctName)
+        #Add new property
+        self.fee = 5 #fee on all withdraws
+
+    #override withdraw method
+    def withdraw(self, amount):
+        try: 
+            self.viableTransaction(amount + self.fee) #Check acct can cover amt + $5 fee
+            self.balance = self.balance - (amount + self.fee)
+            print("\nWithdraw completed.")
+            self.getBalance()
+        except BalanceException as error:
+            print(f'\n❌Withdraw interrupted: {error}')
+
