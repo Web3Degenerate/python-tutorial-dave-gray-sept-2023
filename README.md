@@ -16,4 +16,20 @@ Python Tutorial From Dave Gray From [YouTube on 9/2023](https://www.youtube.com/
 
 1. Started at [(6:57:30)](https://youtu.be/qwAFL1597eM?si=A57WKXbSVoWzTFll&t=25050)
 
-2.
+2. Install (globally) the `requests` package with
+
+   - `py -m pip install requests`
+
+   - To **install a specific version** use (\_windows may require to preface these commands with `py -m`)
+
+     - `py -m pip instal requests==2.30.0`
+
+   - To **update a package** use
+
+     - `py -m pip install -U requests`
+
+   - To **uninstall a package** use
+     - `py -m pip uninstall requests`
+
+3. Check installed python packages with
+   - `py -m pip list`
