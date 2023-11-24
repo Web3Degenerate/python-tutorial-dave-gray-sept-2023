@@ -39,3 +39,14 @@ class BankAccount:
             print(f'\nWithdraw interrupted: {error}')
 
     # (6:41:40) Start transfer method: https://youtu.be/qwAFL1597eM?si=db9abBGQWtOpt8pp&t=24100
+    def transfer(self, amount, account):
+        try: 
+            print('\n***********\n\nBeginning Transfer.. 🚀')
+            self.viableTransaction(amount) #make sure viable transaction that can proceed
+            self.withdraw(amount)
+            account.deposit(amount)
+            print('\nTransfer complete! ✅\n\n**********')
+        except BalanceException as error:
+            print(f'\nTransfer interrupted. ❌ {error}')
+
+# (6:45:58) Create new Class: https://youtu.be/qwAFL1597eM?si=_K0Y3omEcXlptVEo&t=24357
